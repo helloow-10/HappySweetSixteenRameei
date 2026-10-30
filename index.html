@@ -652,28 +652,42 @@
   transition: all 0.3s;
 }
 
-/* Tanggal 10 (Ulang Tahun) dengan Kelas birthday-heart */
+/* Tanggal 10 Berbentuk Hati (Love) Penuh */
 .calendar-grid .birthday-heart {
-  background: #ff8fac;
+  background: transparent !important;
   color: #fff;
   position: relative;
-  transform: scale(1.15);
-  box-shadow: 0 4px 10px rgba(255, 143, 172, 0.4);
+  transform: scale(1.2);
   display: flex;
   align-items: center;
   justify-content: center;
+  font-weight: bold;
+  z-index: 2;
 }
 
-.calendar-grid .birthday-heart:after {
-  content: '♡';
+/* Membuat bentuk dasar hati menggunakan properti CSS */
+.calendar-grid .birthday-heart::before,
+.calendar-grid .birthday-heart::after {
+  content: "";
   position: absolute;
-  font-size: 2.2rem;
-  color: #ffb6c1;
+  top: 0;
+  width: 18px;
+  height: 28px;
+  background: #ff8fac;
+  border-radius: 15px 15px 0 0;
   z-index: -1;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(1.4);
-  opacity: 0.7;
+}
+
+.calendar-grid .birthday-heart::before {
+  left: 18px;
+  transform: rotate(-45deg);
+  transform-origin: 0 100%;
+}
+
+.calendar-grid .birthday-heart::after {
+  left: 0;
+  transform: rotate(45deg);
+  transform-origin: 100% 100%;
 }
 
 /* Tanggal 7 (Penanda Biasa) */
