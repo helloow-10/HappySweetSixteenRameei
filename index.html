@@ -614,54 +614,67 @@
       display: none;
     }
 
-    .calendar-card {
-      background: #25416d;
-      color: white;
-      border: 0;
-      max-width: 440px;
-      border-radius: 30px;
-      padding: 24px 18px;
-      position: relative;
-      overflow: hidden;
-    }
+    /* Kartu Kalender Nuansa Sweet & Soft Pink */
+.calendar-card {
+  background: linear-gradient(135deg, #fff0f5 0%, #ffdde5 100%);
+  color: #8b5368;
+  border: 1px solid #f8d2df;
+  max-width: 440px;
+  border-radius: 30px;
+  padding: 24px 18px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(232, 140, 168, 0.15);
+}
 
-    .calendar-card h2 {
-      font-family: 'Great Vibes';
-      font-size: 3.3rem;
-      color: #fff;
-      margin: 0;
-    }
+.calendar-card h2 {
+  font-family: 'Great Vibes';
+  font-size: 3.3rem;
+  color: #b45d7d;
+  margin: 0;
+}
 
-    .calendar-grid {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      gap: 8px;
-      margin-top: 20px;
-    }
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  margin-top: 20px;
+}
 
-    .calendar-grid span {
-      padding: 6px 0;
-      font-weight: 700;
-      display: grid;
-      place-items: center;
-    }
+.calendar-grid span {
+  padding: 8px 0;
+  font-weight: 700;
+  color: #7d5464;
+}
 
-    .calendar-grid .day {
-      border-radius: 50%;
-    }
+.calendar-grid .day {
+  border-radius: 50%;
+  transition: all 0.3s;
+}
 
-    .calendar-grid .birthday-heart {
-      background: #ffb6c1;
-      color: #fff;
-      position: relative;
-      transform: scale(1.15);
-      clip-path: path('M 12 4.2 C 8 -2, 0 0.5, 0 7 C 0 13, 8 18, 12 22 C 16 18, 24 13, 24 7 C 24 0.5, 16 -2, 12 4.2 Z');
-      width: 32px;
-      height: 32px;
-      margin: 0 auto;
-      font-size: 0.85rem;
-      line-height: 28px;
-    }
+/* Tanggal 10 (Ulang Tahun) dengan Love Manis di Belakangnya */
+.calendar-grid .birthday {
+  background: #ff8fac;
+  color: #fff;
+  position: relative;
+  transform: scale(1.15);
+  box-shadow: 0 4px 10px rgba(255, 143, 172, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.calendar-grid .birthday:after {
+  content: '♡';
+  position: absolute;
+  font-size: 2.2rem;
+  color: #ffb6c1;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1.4);
+  opacity: 0.7;
+}
 
     .calendar-grid .ordinary-mark {
       outline: 2px solid #f3b7cb;
