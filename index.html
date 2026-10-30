@@ -253,7 +253,7 @@
     }
 
     .envelope {
-      width: min(78vw, 320px);
+      width: 320px;
       height: 190px;
       position: relative;
       margin: 18px auto 12px;
@@ -262,15 +262,16 @@
       animation: float 3.5s ease-in-out infinite;
     }
 
-    .env-base {
+   .env-base {
       position: absolute;
       inset: 0;
       background: #f49db8;
       border-radius: 10px;
       overflow: hidden;
     }
-
-    .env-left, .env-right {
+  
+   .env-left, 
+   .env-right {
       position: absolute;
       bottom: 0;
       width: 0;
@@ -280,29 +281,31 @@
       z-index: 2;
     }
 
-    .env-left {
+   .env-left {
       left: 0;
       border-left: 160px solid #f8b4c8;
+      border-right: 0 solid transparent;
     }
 
-    .env-right {
+   .env-right {
       right: 0;
       border-right: 160px solid #f6a7bf;
+      border-left: 0 solid transparent;
     }
 
     .env-flap {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 0;
-      height: 0;
-      border-left: 160px solid transparent;
-      border-right: 160px solid transparent;
-      border-top: 112px solid #fbd0dc;
-      z-index: 3;
-      transform-origin: top;
-      transition: transform .8s;
-    }
+       position: absolute;
+       top: 0;
+       left: 0;
+       width: 0;
+       height: 0;
+       border-left: 160px solid transparent;
+       border-right: 160px solid transparent;
+       border-top: 112px solid #fbd0dc;
+       z-index: 3;
+       transform-origin: top;
+       transition: transform .8s;
+     }
 
     .seal {
       position: absolute;
@@ -319,14 +322,15 @@
       box-shadow: 0 3px 8px #ac6c7c55;
     }
 
-    .envelope.open .env-flap {
+   .envelope.open .env-flap {
       transform: rotateX(180deg);
       z-index: 1;
     }
 
-    .envelope.open .seal {
+   .envelope.open .seal {
       opacity: 0;
     }
+
 
     .pin-card, .paper, .calendar-card, .letter-card {
       background: #fffdfd;
