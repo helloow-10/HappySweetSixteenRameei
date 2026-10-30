@@ -410,10 +410,10 @@
       margin-top: 10px;
     }
 
-    /* Kue Realistis - Bentuk Datar Berlapis */
+    /* Container Utama Kue */
 .cake-wrap {
-  margin: 15px 0 25px;
-  min-height: 225px;
+  margin: 20px 0 30px;
+  min-height: 220px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -422,92 +422,130 @@
 
 .cake {
   position: relative;
-  width: 190px;
-  height: 150px;
-  margin-top: 30px;
-  animation: rise 1s ease both;
-  filter: drop-shadow(0 15px 25px rgba(180, 93, 125, 0.25));
+  width: 200px;
+  height: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
 }
 
-/* Lapisan 1: Paling Bawah (Utama) */
-.cake-layer {
+/* Keyframes Animasi Pop-Up dari Bawah */
+@keyframes cakePop {
+  0% { transform: scaleY(0); opacity: 0; }
+  70% { transform: scaleY(1.1); opacity: 1; }
+  100% { transform: scaleY(1); opacity: 1; }
+}
+
+@keyframes dropIcing {
+  0% { transform: translateY(-10px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+/* 1. Piring / Alas Putih */
+.plate {
   position: absolute;
   bottom: 0;
-  left: 0;
-  width: 190px;
-  height: 52px;
-  border-radius: 8px 8px 12px 12px; /* Pinggiran tidak melengkung bulat lagi */
-  background: linear-gradient(180deg, #f5a3b9 0%, #e37b98 100%);
-  box-shadow: inset 0 -8px 12px rgba(130, 40, 65, 0.25), inset 0 4px 6px rgba(255, 255, 255, 0.4);
+  width: 210px;
+  height: 8px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  animation: cakePop 0.4s ease forwards;
   z-index: 1;
 }
 
-/* Lapisan 2: Tengah */
-.cake-layer.mid {
+/* 2. Lapisan Kue Cokelat 1 (Bawah) */
+.cake-layer {
   position: absolute;
-  bottom: 45px;
-  left: 17px;
-  width: 156px;
-  height: 48px;
-  border-radius: 8px 8px 10px 10px;
-  background: linear-gradient(180deg, #fcd0dc 0%, #f19eb5 100%);
-  box-shadow: inset 0 -6px 10px rgba(130, 40, 65, 0.2), inset 0 3px 5px rgba(255, 255, 255, 0.5);
+  bottom: 8px;
+  width: 180px;
+  height: 32px;
+  background: #8b5a42;
+  border-radius: 6px 6px 4px 4px;
+  box-shadow: inset 0 -4px 0 #734732;
+  animation: cakePop 0.4s 0.3s ease both;
   z-index: 2;
 }
 
-/* Lapisan 3: Paling Atas */
-.cake-layer.top {
-  position: absolute;
-  bottom: 88px;
-  left: 33px;
-  width: 124px;
-  height: 42px;
-  border-radius: 8px 8px 10px 10px;
-  background: linear-gradient(180deg, #fff0f4 0%, #f9c2d1 100%);
-  box-shadow: inset 0 -5px 8px rgba(130, 40, 65, 0.15), inset 0 3px 5px rgba(255, 255, 255, 0.7);
+/* 3. Krim Lapisan Tengah & Lapisan Kue 2 */
+.cake-layer.mid {
+  bottom: 40px;
+  width: 180px;
+  height: 32px;
+  background: #8b5a42;
+  border-top: 5px solid #fceade; /* Krim selai putih di tengah kue */
+  border-radius: 4px;
+  animation: cakePop 0.4s 0.6s ease both;
   z-index: 3;
 }
 
-/* Krim Meleleh / Icing Top */
-.icing {
-  position: absolute;
-  left: 33px;
-  bottom: 122px;
-  width: 124px;
-  height: 14px;
-  background: #ffffff;
-  border-radius: 10px 10px 6px 6px;
-  box-shadow: 0 4px 8px rgba(180, 93, 125, 0.2);
+/* 4. Krim Lapisan Atas & Lapisan Kue 3 */
+.cake-layer.top {
+  bottom: 72px;
+  width: 180px;
+  height: 32px;
+  background: #8b5a42;
+  border-top: 5px solid #fceade;
+  border-radius: 4px 4px 2px 2px;
+  animation: cakePop 0.4s 0.9s ease both;
   z-index: 4;
 }
 
-/* Lilin Pas di Atas Top Cake */
+/* 5. Toping Krim Putih Meleleh di Atas */
+.icing {
+  position: absolute;
+  bottom: 100px;
+  width: 184px;
+  height: 18px;
+  background: #ffffff;
+  border-radius: 10px 10px 4px 4px;
+  animation: dropIcing 0.5s 1.2s ease both;
+  z-index: 5;
+}
+
+/* Lelehan Krim Kebawah */
+.icing::before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 15px;
+  width: 14px;
+  height: 16px;
+  background: #ffffff;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 40px -2px 0 0 #ffffff, 40px 6px 0 0 #ffffff, 
+              90px -2px 0 0 #ffffff, 90px 12px 0 0 #ffffff,
+              130px -2px 0 0 #ffffff, 130px 4px 0 0 #ffffff;
+}
+
+/* 6. Lilin */
 .candle {
   position: absolute;
-  z-index: 5;
-  bottom: 132px;
-  left: calc(50% - 6px);
-  width: 12px;
-  height: 40px;
+  bottom: 118px;
+  left: calc(50% - 5px);
+  width: 10px;
+  height: 36px;
+  background: repeating-linear-gradient(45deg, #ffffff 0 5px, #e87b9b 5px 10px);
   border-radius: 3px;
-  background: repeating-linear-gradient(45deg, #ffffff 0 6px, #e98aa6 6px 12px);
-  box-shadow: inset -2px 0 4px rgba(0,0,0,0.15), 0 3px 6px rgba(0,0,0,0.1);
+  animation: cakePop 0.4s 1.6s ease both;
+  z-index: 6;
 }
 
-/* Api Lilin */
+/* 7. Api Lilin + Cahaya */
 .flame {
   position: absolute;
-  left: -5px;
-  top: -26px;
-  width: 22px;
-  height: 28px;
-  background: radial-gradient(ellipse at 50% 65%, #fffef0 0, #fff7a6 25%, #ffb347 55%, #ff5e62 85%);
+  left: -4px;
+  top: -22px;
+  width: 18px;
+  height: 24px;
+  background: radial-gradient(ellipse at 50% 60%, #ffffff 0%, #ffde59 35%, #ff914d 100%);
   border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-  filter: drop-shadow(0 0 12px #ffb347);
-  animation: flicker .6s infinite alternate;
+  box-shadow: 0 0 15px #ffde59, 0 0 30px #ff914d;
+  animation: flicker 0.6s infinite alternate, cakePop 0.3s 1.9s ease both;
 }
 
-.cake.larger { transform: scale(1.2); transition: transform 1s; }
+.cake.larger { transform: scale(1.15); transition: transform 1s; }
 .cake.normal { transform: scale(1); transition: transform 1s; }
 
     .message-box {
