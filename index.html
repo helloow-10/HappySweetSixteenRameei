@@ -410,7 +410,7 @@
       margin-top: 10px;
     }
 
-    /* Kue Realistis, Berurutan & Menyatu Sempurna */
+    /* Kue Realistis - Bentuk Datar Berlapis */
 .cake-wrap {
   margin: 15px 0 25px;
   min-height: 225px;
@@ -426,90 +426,89 @@
   height: 150px;
   margin-top: 30px;
   animation: rise 1s ease both;
-  filter: drop-shadow(0 15px 25px rgba(180, 93, 125, 0.2));
+  filter: drop-shadow(0 15px 25px rgba(180, 93, 125, 0.25));
 }
 
-/* Lapisan Bawah (Paling besar) */
+/* Lapisan 1: Paling Bawah (Utama) */
 .cake-layer {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 190px;
-  height: 50px;
-  border-radius: 25px;
-  background: linear-gradient(180deg, #f7b2c5 0%, #e78da8 100%);
-  box-shadow: inset 0 -10px 15px rgba(130, 50, 75, 0.2), 0 8px 15px rgba(0,0,0,0.05);
+  height: 52px;
+  border-radius: 8px 8px 12px 12px; /* Pinggiran tidak melengkung bulat lagi */
+  background: linear-gradient(180deg, #f5a3b9 0%, #e37b98 100%);
+  box-shadow: inset 0 -8px 12px rgba(130, 40, 65, 0.25), inset 0 4px 6px rgba(255, 255, 255, 0.4);
   z-index: 1;
 }
 
-/* Lapisan Tengah */
+/* Lapisan 2: Tengah */
 .cake-layer.mid {
   position: absolute;
-  bottom: 42px;
-  left: 12px;
-  width: 166px;
+  bottom: 45px;
+  left: 17px;
+  width: 156px;
   height: 48px;
-  border-radius: 22px;
-  background: linear-gradient(180deg, #ffdeea 0%, #f4afc1 100%);
-  box-shadow: inset 0 -8px 12px rgba(130, 50, 75, 0.15), 0 5px 10px rgba(0,0,0,0.04);
+  border-radius: 8px 8px 10px 10px;
+  background: linear-gradient(180deg, #fcd0dc 0%, #f19eb5 100%);
+  box-shadow: inset 0 -6px 10px rgba(130, 40, 65, 0.2), inset 0 3px 5px rgba(255, 255, 255, 0.5);
   z-index: 2;
 }
 
-/* Lapisan Atas */
+/* Lapisan 3: Paling Atas */
 .cake-layer.top {
   position: absolute;
-  bottom: 82px;
-  left: 30px;
-  width: 130px;
+  bottom: 88px;
+  left: 33px;
+  width: 124px;
   height: 42px;
-  border-radius: 20px;
-  background: linear-gradient(180deg, #fff2f6 0%, #ffe5ec 100%);
-  box-shadow: inset 0 -6px 10px rgba(130, 50, 75, 0.1), 0 4px 8px rgba(0,0,0,0.03);
+  border-radius: 8px 8px 10px 10px;
+  background: linear-gradient(180deg, #fff0f4 0%, #f9c2d1 100%);
+  box-shadow: inset 0 -5px 8px rgba(130, 40, 65, 0.15), inset 0 3px 5px rgba(255, 255, 255, 0.7);
   z-index: 3;
 }
 
-/* Krim / Icing di atas kue */
+/* Krim Meleleh / Icing Top */
 .icing {
   position: absolute;
-  left: 30px;
-  bottom: 115px;
-  width: 130px;
-  height: 16px;
-  background: linear-gradient(180deg, #ffffff 0%, #fff0f3 100%);
-  border-radius: 50%;
-  box-shadow: 0 3px 5px rgba(180, 93, 125, 0.15);
+  left: 33px;
+  bottom: 122px;
+  width: 124px;
+  height: 14px;
+  background: #ffffff;
+  border-radius: 10px 10px 6px 6px;
+  box-shadow: 0 4px 8px rgba(180, 93, 125, 0.2);
   z-index: 4;
 }
 
-/* Lilin di atas kue */
+/* Lilin Pas di Atas Top Cake */
 .candle {
   position: absolute;
   z-index: 5;
-  bottom: 122px;
+  bottom: 132px;
   left: calc(50% - 6px);
   width: 12px;
-  height: 42px;
-  border-radius: 6px;
-  background: repeating-linear-gradient(45deg, #fff 0 6px, #e98aa6 6px 12px);
-  box-shadow: inset -2px 0 4px rgba(0,0,0,0.1), 0 3px 6px rgba(0,0,0,0.1);
+  height: 40px;
+  border-radius: 3px;
+  background: repeating-linear-gradient(45deg, #ffffff 0 6px, #e98aa6 6px 12px);
+  box-shadow: inset -2px 0 4px rgba(0,0,0,0.15), 0 3px 6px rgba(0,0,0,0.1);
 }
 
 /* Api Lilin */
 .flame {
   position: absolute;
   left: -5px;
-  top: -28px;
+  top: -26px;
   width: 22px;
-  height: 30px;
+  height: 28px;
   background: radial-gradient(ellipse at 50% 65%, #fffef0 0, #fff7a6 25%, #ffb347 55%, #ff5e62 85%);
   border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
   filter: drop-shadow(0 0 12px #ffb347);
   animation: flicker .6s infinite alternate;
 }
 
-.cake.larger { transform: scale(1.25); transition: transform 1s; }
+.cake.larger { transform: scale(1.2); transition: transform 1s; }
 .cake.normal { transform: scale(1); transition: transform 1s; }
-
 
     .message-box {
       max-width: 600px;
