@@ -1155,7 +1155,7 @@
     <h2 class="script" style="font-size:3rem;color:#ffc8da">You are so loved</h2>
     <p class="love-note">Semoga hatimu selalu punya ruang untuk hal-hal indah.<br>Aku memilih kamu, hari ini dan di banyak hari setelahnya. ♡</p>
     <p class="tiny" style="color:#f8dce7">sebentar yaa... masii ada lagi 💌</p>
-    <button class="secondary" onclick="go(7)">pencet skrg atau nanti aja ? →</button>
+    <button class="secondary" onclick="go('Pin2')">pencet skrg atau nanti aja ? →</button>
   </section>
 
 <!-- SLIDE PIN KEDUA -->
@@ -1196,8 +1196,7 @@
 
       <p class="error" id="pinError2"></p>
   <button class="secondary" onclick="go('Pin2')">
-  Buka kejutan berikutnya →
-</button>
+  Buka kejutan berikutnya →</button>
     </div>
   </section>
   
@@ -1313,13 +1312,13 @@
 <script>
   const PIN_BENAR = "0710";
   const PIN_KEDUA = "1010";
-  let pin2 = "";
   const NAMA_PANGGILAN = "Rameiizaa";
   const BULAN_ULANG_TAHUN = "November";
   const TANGGAL_ULANG_TAHUN = 10;
   const TANGGAL_PENANDA_BIASA = 7;
 
   let pin = "";
+  let pin2 = "";
   let autoTimer = null;
   let cameraStream = null;
   let noClickCount = 0;
