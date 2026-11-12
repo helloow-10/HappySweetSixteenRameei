@@ -1142,7 +1142,7 @@
     <p class="script" style="font-size:2rem;text-align:center">Dunia jadi lebih indah sejak kamu ada bbyy. 🎀</p>
     <button class="primary" onclick="go(6)">Pencett Lagii!! →</button>
   </section>
-
+  
   <!-- SLIDE 6 -->
   <section class="slide dark-night" id="s6">
     <span class="decor d1">✦</span>
@@ -1158,6 +1158,49 @@
     <button class="secondary" onclick="go(7)">pencet skrg atau nanti aja ? →</button>
   </section>
 
+<!-- SLIDE PIN KEDUA -->
+  <section class="slide" id="sPin2">
+    <span class="decor d1">🎀</span>
+    <span class="decor d2">🌸</span>
+    <span class="decor d3">♡</span>
+    <span class="decor d4">✨</span>
+
+    <div class="pin-card">
+      <span class="cat">🔐</span>
+      <h2 style="font-family:Georgia,serif;color:#644a56">
+        One more secret
+      </h2>
+      <p class="sub">Masukkan kode rahasia kedua untuk membuka surat berikutnya ♡</p>
+
+      <div class="pin-dots" id="pinDots2">
+        <span class="pin-dot"></span>
+        <span class="pin-dot"></span>
+        <span class="pin-dot"></span>
+        <span class="pin-dot"></span>
+      </div>
+
+      <div class="keypad">
+        <button onclick="digit2('1', event)">1</button>
+        <button onclick="digit2('2', event)">2</button>
+        <button onclick="digit2('3', event)">3</button>
+        <button onclick="digit2('4', event)">4</button>
+        <button onclick="digit2('5', event)">5</button>
+        <button onclick="digit2('6', event)">6</button>
+        <button onclick="digit2('7', event)">7</button>
+        <button onclick="digit2('8', event)">8</button>
+        <button onclick="digit2('9', event)">9</button>
+        <button onclick="delPin2(event)">del</button>
+        <button onclick="digit2('0', event)">0</button>
+        <button onclick="clearPin2(event)">clr</button>
+      </div>
+
+      <p class="error" id="pinError2"></p>
+  <button class="secondary" onclick="go('Pin2')">
+  Buka kejutan berikutnya →
+</button>
+    </div>
+  </section>
+  
   <!-- SLIDE 7 -->
   <section class="slide" id="s7">
     <span class="decor d1">🎀</span>
@@ -1269,6 +1312,8 @@
 
 <script>
   const PIN_BENAR = "0710";
+  const PIN_KEDUA = "1010";
+  let pin2 = "";
   const NAMA_PANGGILAN = "Rameiizaa";
   const BULAN_ULANG_TAHUN = "November";
   const TANGGAL_ULANG_TAHUN = 10;
@@ -1281,22 +1326,27 @@
 
   const slideIds = [...Array(9)].map((_, i) => 's' + (i + 1));
 
-  function go(n) {
-    document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
-    document.getElementById('s' + n).classList.add('active');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+ function go(n) {
+  document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
 
-    if (autoTimer) {
-      clearTimeout(autoTimer);
-      autoTimer = null;
-    }
+  const target = typeof n === 'string' ? 's' + n : 's' + n;
+  document.getElementById(target).classList.add('active');
 
-    if (n === 6) {
-      autoTimer = setTimeout(() => {
-        if (document.getElementById('s6').classList.contains('active')) go(7);
-      }, 13000);
-    }
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  if (autoTimer) {
+    clearTimeout(autoTimer);
+    autoTimer = null;
   }
+
+  if (n === 6) {
+    autoTimer = setTimeout(() => {
+      if (document.getElementById('s6').classList.contains('active')) {
+        go('Pin2');
+      }
+    }, 13000);
+  }
+}
 
   function openPin() {
     document.getElementById('startEnvelope').classList.add('open');
@@ -1365,6 +1415,50 @@
     }
   }
 
+function renderPin() {
+    document.querySelectorAll('.pin-dot').forEach((d, i) => {
+      d.textContent = pin[i] ? '●' : '';
+    });
+  }
+
+  function digit(n, e) {
+    if (e) createTouchEffect(e);
+    if (pin.length >= 4) return;
+    pin += n;
+    renderPin();
+    if (pin.length === 4) setTimeout(checkPin, 160);
+  }
+
+  function delPin(e) {
+    if (e) createTouchEffect(e);
+    pin = pin.slice(0, -1);
+    renderPin();
+  }
+
+  function clearPin(e) {
+    if (e) createTouchEffect(e);
+    pin = '';
+    renderPin();
+    document.getElementById('pinError').textContent = '';
+  }
+
+  function checkPin() {
+    if (pin === PIN_BENAR) {
+      document.getElementById('pinError').textContent = 'Benar! kejutan dibuka ♡';
+      setTimeout(() => {
+        go(3);
+        setTimeout(() => {
+          const c = document.getElementById('cake');
+          if (c) c.classList.remove('larger');
+        }, 1500);
+      }, 400);
+    } else {
+      document.getElementById('pinError').textContent = 'Hmm, PIN-nya belum tepat. Coba lagi ya 💗';
+      pin = '';
+      setTimeout(renderPin, 500);
+    }
+  }
+  
   function makeMemoryCards() {
   const grid = document.getElementById('memoryGrid');
   grid.innerHTML = '';
