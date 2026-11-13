@@ -690,143 +690,7 @@
       margin-top: 10px;
     }
 
-    /* Container Utama Kue */
-.cake-wrap {
-  margin: 20px 0 30px;
-  min-height: 220px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-}
 
-.cake {
-  position: relative;
-  width: 200px;
-  height: 140px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-}
-
-/* Keyframes Animasi Pop-Up dari Bawah */
-@keyframes cakePop {
-  0% { transform: scaleY(0); opacity: 0; }
-  70% { transform: scaleY(1.1); opacity: 1; }
-  100% { transform: scaleY(1); opacity: 1; }
-}
-
-@keyframes dropIcing {
-  0% { transform: translateY(-10px); opacity: 0; }
-  100% { transform: translateY(0); opacity: 1; }
-}
-
-/* 1. Piring / Alas Putih */
-.plate {
-  position: absolute;
-  bottom: 0;
-  width: 210px;
-  height: 8px;
-  background: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-  animation: cakePop 0.4s ease forwards;
-  z-index: 1;
-}
-
-/* 2. Lapisan Kue Cokelat 1 (Bawah) */
-.cake-layer {
-  position: absolute;
-  bottom: 8px;
-  width: 180px;
-  height: 32px;
-  background: #8b5a42;
-  border-radius: 6px 6px 4px 4px;
-  box-shadow: inset 0 -4px 0 #734732;
-  animation: cakePop 0.4s 0.3s ease both;
-  z-index: 2;
-}
-
-/* 3. Krim Lapisan Tengah & Lapisan Kue 2 */
-.cake-layer.mid {
-  bottom: 40px;
-  width: 180px;
-  height: 32px;
-  background: #8b5a42;
-  border-top: 5px solid #fceade; /* Krim selai putih di tengah kue */
-  border-radius: 4px;
-  animation: cakePop 0.4s 0.6s ease both;
-  z-index: 3;
-}
-
-/* 4. Krim Lapisan Atas & Lapisan Kue 3 */
-.cake-layer.top {
-  bottom: 72px;
-  width: 180px;
-  height: 32px;
-  background: #8b5a42;
-  border-top: 5px solid #fceade;
-  border-radius: 4px 4px 2px 2px;
-  animation: cakePop 0.4s 0.9s ease both;
-  z-index: 4;
-}
-
-/* 5. Toping Krim Putih Meleleh di Atas */
-.icing {
-  position: absolute;
-  bottom: 100px;
-  width: 184px;
-  height: 18px;
-  background: #ffffff;
-  border-radius: 10px 10px 4px 4px;
-  animation: dropIcing 0.5s 1.2s ease both;
-  z-index: 5;
-}
-
-/* Lelehan Krim Kebawah */
-.icing::before {
-  content: '';
-  position: absolute;
-  top: 100%;
-  left: 15px;
-  width: 14px;
-  height: 16px;
-  background: #ffffff;
-  border-radius: 0 0 10px 10px;
-  box-shadow: 40px -2px 0 0 #ffffff, 40px 6px 0 0 #ffffff, 
-              90px -2px 0 0 #ffffff, 90px 12px 0 0 #ffffff,
-              130px -2px 0 0 #ffffff, 130px 4px 0 0 #ffffff;
-}
-
-/* 6. Lilin */
-.candle {
-  position: absolute;
-  bottom: 118px;
-  left: calc(50% - 5px);
-  width: 10px;
-  height: 36px;
-  background: repeating-linear-gradient(45deg, #ffffff 0 5px, #e87b9b 5px 10px);
-  border-radius: 3px;
-  animation: cakePop 0.4s 1.6s ease both;
-  z-index: 6;
-}
-
-/* 7. Api Lilin + Cahaya */
-.flame {
-  position: absolute;
-  left: -4px;
-  top: -22px;
-  width: 18px;
-  height: 24px;
-  background: radial-gradient(ellipse at 50% 60%, #ffffff 0%, #ffde59 35%, #ff914d 100%);
-  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-  box-shadow: 0 0 15px #ffde59, 0 0 30px #ff914d;
-  animation: flicker 0.6s infinite alternate, cakePop 0.3s 1.9s ease both;
-}
-
-.cake.larger { transform: scale(1.15); transition: transform 1s; }
-.cake.normal { transform: scale(1); transition: transform 1s; }
 
     .message-box {
       max-width: 600px;
@@ -1285,6 +1149,170 @@
         padding-top: 45px;
       }
     }
+
+.elegant-cake {
+  width: 100%;
+  max-width: 440px;
+  margin: 5px auto 12px;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: visible;
+}
+
+.elegant-cake .cake-art {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  display: block;
+  filter: drop-shadow(0 12px 13px rgba(133, 91, 96, .10));
+}
+
+/* Plate */
+.elegant-cake .cake-plate {
+  opacity: 0;
+  animation: cakeAppear .8s .2s ease-out forwards;
+}
+
+/* Cake tiers */
+.elegant-cake .cake-tier {
+  opacity: 0;
+  transform: translateY(25px) scale(.94);
+  transform-box: fill-box;
+  transform-origin: center bottom;
+  animation: tierAppear 1s ease-out forwards;
+}
+
+.elegant-cake .tier-bottom {
+  animation-delay: .7s;
+}
+
+.elegant-cake .tier-middle {
+  animation-delay: 1.5s;
+}
+
+.elegant-cake .tier-top {
+  animation-delay: 2.3s;
+}
+
+/* Top icing */
+.elegant-cake .cake-top {
+  opacity: 0;
+  animation: cakeAppear .8s 3s ease-out forwards;
+}
+
+/* Decorations */
+.elegant-cake .cake-ribbons {
+  opacity: 0;
+  transform-origin: center;
+  animation: ribbonAppear 1s 4s ease-out forwards;
+}
+
+.elegant-cake .cake-pearls {
+  opacity: 0;
+  animation: cakeAppear .7s 3.7s ease-out forwards;
+}
+
+/* Candles */
+.elegant-cake .cake-candles {
+  opacity: 0;
+  animation: cakeAppear .8s 3.8s ease-out forwards;
+}
+
+/* Candle flames */
+.elegant-cake .candle-flame {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center bottom;
+  animation:
+    flameOn .65s ease-out forwards,
+    flameDance 1.5s ease-in-out infinite;
+  animation-delay: 6.8s, 7.45s;
+}
+
+.elegant-cake .flame-two {
+  animation-delay: 7.05s, 7.7s;
+}
+
+.elegant-cake .flame-three {
+  animation-delay: 7.3s, 7.95s;
+}
+
+/* Animations */
+@keyframes cakeAppear {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes tierAppear {
+  0% {
+    opacity: 0;
+    transform: translateY(25px) scale(.94);
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(-3px) scale(1.01);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes ribbonAppear {
+  0% {
+    opacity: 0;
+    transform: translateY(8px) scale(.94);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes flameOn {
+  from {
+    opacity: 0;
+    transform: scale(.2);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes flameDance {
+  0%, 100% {
+    transform: rotate(-3deg) scale(1);
+  }
+  50% {
+    transform: rotate(3deg) scale(1.08, .94);
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .elegant-cake {
+    max-width: 100%;
+    padding: 4px 0 12px;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .elegant-cake * {
+    animation-duration: .01ms !important;
+    animation-delay: 0s !important;
+  }
+}
+    
   </style>
 </head>
 <body>
@@ -1376,17 +1404,318 @@
     <h2 class="script" style="font-size:3rem">Make a wish, birthday girl!</h2>
     <p class="sub">Satu lilin kecil untuk semua harapan indahmu 🕯️</p>
 
-    <div class="cake-wrap">
-      <div class="cake larger" id="cake">
-        <div class="cake-layer"></div>
-        <div class="cake-layer mid"></div>
-        <div class="cake-layer top"></div>
-        <div class="icing"></div>
-        <div class="candle">
-          <div class="flame"></div>
-        </div>
-      </div>
-    </div>
+    <div class="elegant-cake">
+  <svg class="cake-art" viewBox="0 0 600 510" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="cakePink" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#d995a6"/>
+        <stop offset=".22" stop-color="#f4cbd1"/>
+        <stop offset=".55" stop-color="#f8dce0"/>
+        <stop offset=".82" stop-color="#edbdc8"/>
+        <stop offset="1" stop-color="#c98296"/>
+      </linearGradient>
+
+      <linearGradient id="cakeIvory" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#e8d5bd"/>
+        <stop offset=".2" stop-color="#fff8eb"/>
+        <stop offset=".55" stop-color="#fffdf5"/>
+        <stop offset=".82" stop-color="#f7e8d5"/>
+        <stop offset="1" stop-color="#d9c1a8"/>
+      </linearGradient>
+
+      <linearGradient id="icing" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#fffef8"/>
+        <stop offset=".65" stop-color="#fff4e9"/>
+        <stop offset="1" stop-color="#f2dfd0"/>
+      </linearGradient>
+
+      <linearGradient id="gold" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#b88a4d"/>
+        <stop offset=".35" stop-color="#f5dfad"/>
+        <stop offset=".7" stop-color="#d3ad70"/>
+        <stop offset="1" stop-color="#a9793e"/>
+      </linearGradient>
+
+      <linearGradient id="plate" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#fffdf8"/>
+        <stop offset="1" stop-color="#d9c8b9"/>
+      </linearGradient>
+
+      <linearGradient id="flame" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#fff9d9"/>
+        <stop offset=".35" stop-color="#ffe6a1"/>
+        <stop offset="1" stop-color="#f4a34f"/>
+      </linearGradient>
+
+      <filter id="softShadow" x="-30%" y="-30%" width="160%" height="180%">
+        <feGaussianBlur stdDeviation="8"/>
+      </filter>
+    </defs>
+
+    <!-- Shadow -->
+    <ellipse cx="300" cy="461" rx="190" ry="17"
+      fill="#98717a" opacity=".17" filter="url(#softShadow)"/>
+
+    <!-- Plate -->
+    <g class="cake-plate">
+      <path d="M95 435 Q300 461 505 435 L490 454 Q300 480 110 454 Z"
+        fill="url(#plate)"/>
+      <ellipse cx="300" cy="435" rx="205" ry="27"
+        fill="#fffaf3" stroke="#ddcbb9" stroke-width="2"/>
+      <ellipse cx="300" cy="435" rx="183" ry="18"
+        fill="none" stroke="url(#gold)" stroke-width="1.5" opacity=".75"/>
+      <path d="M110 445 Q300 470 490 445"
+        fill="none" stroke="#fff" stroke-width="3" opacity=".8"/>
+    </g>
+
+    <!-- Bottom tier -->
+    <g class="cake-tier tier-bottom">
+      <path d="M120 333 Q120 315 150 310
+        Q300 287 450 310 Q480 315 480 333
+        L480 419 Q300 454 120 419 Z"
+        fill="url(#cakePink)"/>
+
+      <path d="M120 333 Q300 365 480 333"
+        fill="none" stroke="#fff0ed" stroke-width="3" opacity=".7"/>
+
+      <path d="M120 330
+        C150 337 166 338 188 335
+        C211 331 221 341 239 342
+        C260 343 272 334 291 337
+        C314 341 328 347 348 341
+        C369 335 381 330 400 336
+        C424 344 444 337 480 329
+        L480 354
+        C458 351 451 374 435 375
+        C416 376 414 350 395 350
+        C375 350 373 379 353 380
+        C334 380 329 352 309 352
+        C288 352 284 372 264 372
+        C243 372 239 352 220 353
+        C201 354 195 382 176 380
+        C157 378 157 350 139 350
+        L120 347 Z"
+        fill="url(#icing)"/>
+
+      <path d="M120 330 Q300 363 480 329"
+        fill="none" stroke="#fffdf6" stroke-width="5"
+        stroke-linecap="round"/>
+
+      <path d="M126 399 Q300 430 474 399"
+        fill="none" stroke="url(#gold)" stroke-width="2" opacity=".8"/>
+
+      <path d="M143 371 Q145 395 145 410"
+        stroke="#fff7f1" stroke-width="5" opacity=".35"
+        stroke-linecap="round"/>
+      <path d="M455 365 Q453 390 453 405"
+        stroke="#fff7f1" stroke-width="4" opacity=".3"
+        stroke-linecap="round"/>
+    </g>
+
+    <!-- Middle tier -->
+    <g class="cake-tier tier-middle">
+      <path d="M158 235 Q158 217 185 213
+        Q300 190 415 213 Q442 217 442 235
+        L442 326 Q300 356 158 326 Z"
+        fill="url(#cakeIvory)"/>
+
+      <path d="M158 235 Q300 263 442 235"
+        fill="none" stroke="#fff" stroke-width="3" opacity=".9"/>
+
+      <path d="M158 233
+        C183 239 199 240 216 235
+        C237 228 249 241 268 244
+        C288 247 298 235 316 236
+        C338 237 349 245 368 241
+        C392 236 414 239 442 232
+        L442 252
+        C424 253 420 278 404 278
+        C387 278 385 251 368 251
+        C350 251 348 270 330 270
+        C311 270 307 248 289 249
+        C270 250 266 272 247 271
+        C228 270 227 249 210 249
+        C192 249 189 266 174 264
+        L158 258 Z"
+        fill="url(#icing)"/>
+
+      <path d="M160 233 Q300 263 440 233"
+        fill="none" stroke="#fffefa" stroke-width="5"
+        stroke-linecap="round"/>
+
+      <path d="M169 309 Q300 335 431 309"
+        fill="none" stroke="url(#gold)" stroke-width="2" opacity=".8"/>
+
+      <path d="M181 280 Q182 300 182 315"
+        stroke="#fff" stroke-width="4" opacity=".4"
+        stroke-linecap="round"/>
+    </g>
+
+    <!-- Top tier -->
+    <g class="cake-tier tier-top">
+      <path d="M198 150 Q198 132 222 128
+        Q300 110 378 128 Q402 132 402 150
+        L402 237 Q300 260 198 237 Z"
+        fill="url(#cakePink)"/>
+
+      <path d="M198 150 Q300 176 402 150"
+        fill="none" stroke="#fff1ef" stroke-width="3"/>
+
+      <path d="M198 148
+        C220 153 235 153 250 148
+        C267 142 279 154 297 157
+        C316 160 328 148 344 149
+        C365 150 384 153 402 147
+        L402 166
+        C385 168 383 187 369 187
+        C354 187 352 166 337 166
+        C322 166 318 185 303 185
+        C287 185 284 162 269 162
+        C254 162 250 180 236 179
+        C222 178 219 162 198 161 Z"
+        fill="url(#icing)"/>
+
+      <path d="M201 148 Q300 176 399 148"
+        fill="none" stroke="#fffefa" stroke-width="5"
+        stroke-linecap="round"/>
+
+      <path d="M211 221 Q300 244 389 221"
+        fill="none" stroke="url(#gold)" stroke-width="2" opacity=".85"/>
+    </g>
+
+    <!-- Top icing -->
+    <g class="cake-top">
+      <ellipse cx="300" cy="145" rx="102" ry="27"
+        fill="url(#icing)" stroke="#f1e3d5" stroke-width="1.5"/>
+      <ellipse cx="300" cy="143" rx="85" ry="18"
+        fill="none" stroke="#fff" stroke-width="2" opacity=".8"/>
+
+      <g fill="none" stroke="#fffdf7" stroke-linecap="round">
+        <path d="M230 144 C230 130 248 128 253 140
+          C257 151 241 155 239 144" stroke-width="9"/>
+        <path d="M370 144 C370 130 352 128 347 140
+          C343 151 359 155 361 144" stroke-width="9"/>
+        <path d="M300 131 C286 120 282 108 300 105
+          C318 108 314 120 300 131" stroke-width="10"/>
+      </g>
+
+      <g fill="#e5c5a5">
+        <circle cx="230" cy="142" r="3"/>
+        <circle cx="370" cy="142" r="3"/>
+        <circle cx="300" cy="108" r="3"/>
+      </g>
+    </g>
+
+    <!-- Candles -->
+    <g class="cake-candles">
+      <g>
+        <rect x="251" y="83" width="12" height="48" rx="5"
+          fill="#fffaf1" stroke="#e8d5c2" stroke-width="1"/>
+        <path d="M252 94 L262 88 M252 108 L262 102 M252 122 L262 116"
+          stroke="#d99bad" stroke-width="3" stroke-linecap="round"/>
+        <path d="M257 82 L257 76" stroke="#8e6b59" stroke-width="2"/>
+        <path class="candle-flame flame-one"
+          d="M257 76 C245 65 255 55 259 48
+          C262 58 271 66 257 76 Z"
+          fill="url(#flame)"/>
+      </g>
+
+      <g>
+        <rect x="294" y="69" width="12" height="58" rx="5"
+          fill="#fffaf1" stroke="#e8d5c2" stroke-width="1"/>
+        <path d="M295 83 L305 77 M295 99 L305 93 M295 115 L305 109"
+          stroke="#d99bad" stroke-width="3" stroke-linecap="round"/>
+        <path d="M300 69 L300 63" stroke="#8e6b59" stroke-width="2"/>
+        <path class="candle-flame flame-two"
+          d="M300 63 C288 51 298 40 302 33
+          C305 44 314 53 300 63 Z"
+          fill="url(#flame)"/>
+      </g>
+
+      <g>
+        <rect x="337" y="83" width="12" height="48" rx="5"
+          fill="#fffaf1" stroke="#e8d5c2" stroke-width="1"/>
+        <path d="M338 94 L348 88 M338 108 L348 102 M338 122 L348 116"
+          stroke="#d99bad" stroke-width="3" stroke-linecap="round"/>
+        <path d="M343 82 L343 76" stroke="#8e6b59" stroke-width="2"/>
+        <path class="candle-flame flame-three"
+          d="M343 76 C331 65 341 55 345 48
+          C348 58 357 66 343 76 Z"
+          fill="url(#flame)"/>
+      </g>
+    </g>
+
+    <!-- Satin ribbons -->
+    <g class="cake-ribbons">
+
+      <!-- Ivory ribbon on bottom tier -->
+      <path d="M124 375 Q300 407 476 375"
+        fill="none" stroke="#fff4e9" stroke-width="9"
+        stroke-linecap="round"/>
+      <path d="M124 375 Q300 407 476 375"
+        fill="none" stroke="#d9bda9" stroke-width="1.2"
+        opacity=".75"/>
+
+      <!-- Bottom bow -->
+      <g transform="translate(300 393)">
+        <path d="M-5 0 C-30 -24 -53 -19 -46 -4
+          C-40 10 -19 9 -5 3 Z"
+          fill="#fff5e9" stroke="#dfc8b5" stroke-width="1.5"/>
+        <path d="M5 0 C30 -24 53 -19 46 -4
+          C40 10 19 9 5 3 Z"
+          fill="#fff5e9" stroke="#dfc8b5" stroke-width="1.5"/>
+        <path d="M-5 2 Q-18 19 -23 31 L-7 27 L0 5 Z"
+          fill="#f6e4d4" stroke="#dfc8b5" stroke-width="1"/>
+        <path d="M5 2 Q18 19 23 31 L7 27 L0 5 Z"
+          fill="#f6e4d4" stroke="#dfc8b5" stroke-width="1"/>
+        <ellipse cx="0" cy="1" rx="8" ry="7" fill="url(#gold)"/>
+        <circle cx="-2" cy="-1" r="2" fill="#fff6dc"/>
+      </g>
+
+      <!-- Dusty pink ribbon on middle tier -->
+      <path d="M160 280 Q300 304 440 280"
+        fill="none" stroke="#d99bad" stroke-width="8"
+        stroke-linecap="round"/>
+      <path d="M160 280 Q300 304 440 280"
+        fill="none" stroke="#f8dce2" stroke-width="1.5"
+        opacity=".9"/>
+
+      <!-- Middle bow -->
+      <g transform="translate(300 291) scale(.75)">
+        <path d="M-5 0 C-30 -24 -53 -19 -46 -4
+          C-40 10 -19 9 -5 3 Z"
+          fill="#e8afbd" stroke="#c98b9d" stroke-width="1.5"/>
+        <path d="M5 0 C30 -24 53 -19 46 -4
+          C40 10 19 9 5 3 Z"
+          fill="#e8afbd" stroke="#c98b9d" stroke-width="1.5"/>
+        <path d="M-5 2 Q-18 19 -23 31 L-7 27 L0 5 Z"
+          fill="#d99bad" stroke="#c98b9d" stroke-width="1"/>
+        <path d="M5 2 Q18 19 23 31 L7 27 L0 5 Z"
+          fill="#d99bad" stroke="#c98b9d" stroke-width="1"/>
+        <ellipse cx="0" cy="1" rx="8" ry="7" fill="url(#gold)"/>
+        <circle cx="-2" cy="-1" r="2" fill="#fff6dc"/>
+      </g>
+
+      <!-- Pearl details -->
+      <g fill="#fffaf0" stroke="#d9bda9" stroke-width=".7">
+        <circle cx="270" cy="402" r="3"/>
+        <circle cx="330" cy="402" r="3"/>
+        <circle cx="278" cy="300" r="2.5"/>
+        <circle cx="322" cy="300" r="2.5"/>
+      </g>
+    </g>
+
+    <!-- Gold pearls -->
+    <g class="cake-pearls" fill="url(#gold)">
+      <circle cx="181" cy="292" r="3"/>
+      <circle cx="419" cy="292" r="3"/>
+      <circle cx="206" cy="390" r="3.5"/>
+      <circle cx="394" cy="390" r="3.5"/>
+      <circle cx="300" cy="413" r="3"/>
+      <circle cx="300" cy="318" r="2.8"/>
+    </g>
+  </svg>
+</div>
 
     <div class="message-box">
       <h2 class="script" style="font-size:2.5rem">Selamat ulang tahun, izuutt! ♡</h2>
