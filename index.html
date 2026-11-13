@@ -198,6 +198,151 @@
     linear-gradient(160deg, #26395e, #0d1735 75%);
 }
 
+/* FLOATING FLOWER PETALS */
+
+.flower-petal {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  pointer-events: none;
+  z-index: 0;
+  font-size: 17px;
+  opacity: 0;
+  animation: petalFall linear forwards;
+  filter: blur(.3px);
+}
+
+@keyframes petalFall {
+  0% {
+    opacity: 0;
+    transform: translate3d(0,-5vh,0) rotate(0);
+  }
+
+  15% {
+    opacity: .65;
+  }
+
+  50% {
+    transform: translate3d(35px,50vh,0) rotate(150deg);
+  }
+
+  85% {
+    opacity: .55;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(-25px,110vh,0) rotate(320deg);
+  }
+}
+
+    .pin-card,
+.calendar-card,
+.message-box {
+  position: relative;
+}
+
+.pin-card::after,
+.calendar-card::after,
+.message-box::after {
+  content: '🎀';
+  position: absolute;
+  top: -13px;
+  right: 18px;
+  font-size: 28px;
+  transform: rotate(12deg);
+  pointer-events: none;
+  animation: ribbonSway 4s ease-in-out infinite;
+}
+
+@keyframes ribbonSway {
+  0%, 100% {
+    transform: rotate(10deg);
+  }
+  50% {
+    transform: rotate(-8deg) translateY(3px);
+  }
+}
+
+.polaroid {
+  transition:
+    transform .5s cubic-bezier(.2,.8,.2,1),
+    box-shadow .5s ease;
+}
+
+.polaroid:hover {
+  transform: rotate(0) translateY(-6px) scale(1.035);
+  box-shadow: 0 16px 28px #46253c30;
+}
+
+.envelope,
+.mini-envelope {
+  transition: filter .4s ease;
+}
+
+.envelope:hover,
+.mini-envelope:hover {
+  filter: drop-shadow(0 15px 20px #d86f9440);
+}
+
+    @media (prefers-reduced-motion: reduce) {
+  .bg-flower,
+  .bg-glow,
+  .decor,
+  .flower-petal {
+    animation: none !important;
+  }
+
+  .slide.active,
+  .slide.leaving {
+    animation-duration: .01ms;
+  }
+}
+
+    .decor {
+  transform-origin: center;
+  will-change: transform;
+  animation: gentleDecor 5s ease-in-out infinite;
+}
+
+@keyframes gentleDecor {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(-4deg);
+  }
+  50% {
+    transform: translate3d(0, -9px, 0) rotate(4deg);
+  }
+}
+
+.primary,
+.secondary {
+  transition:
+    transform .35s cubic-bezier(.2,.8,.2,1),
+    box-shadow .35s ease,
+    background .35s ease;
+}
+
+.primary:hover,
+.secondary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px #d58ba53d;
+}
+
+.message-box {
+  animation: gentleAppear 1.2s .3s both;
+}
+
+@keyframes gentleAppear {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+    
     @keyframes slideIn {
       from {
         opacity: 0;
@@ -1878,9 +2023,31 @@ function checkPin2() {
     setTimeout(() => h.remove(), 15000);
   }
 
+  function createFlowerPetal() {
+  const petal = document.createElement('span');
+
+  petal.className = 'flower-petal';
+
+  petal.textContent = [
+    '🌸',
+    '🌷',
+    '✿',
+    '❀'
+  ][Math.floor(Math.random() * 4)];
+
+  petal.style.left = Math.random() * 100 + 'vw';
+  petal.style.animationDuration = (9 + Math.random() * 7) + 's';
+  petal.style.fontSize = (12 + Math.random() * 13) + 'px';
+
+  document.getElementById('app').appendChild(petal);
+
+  setTimeout(() => petal.remove(), 17000);
+}
+
   makeMemoryCards();
   makeCalendar();
   setInterval(floatingHearts, 1100);
+  setInterval(createFlowerPetal, 1600);
 </script>
 
 </body>
