@@ -1310,13 +1310,13 @@
 <script>
   const PIN_BENAR = "0710";
   const PIN_KEDUA = "1010";
+  let pin2 = "";
   const NAMA_PANGGILAN = "Rameiizaa";
   const BULAN_ULANG_TAHUN = "November";
   const TANGGAL_ULANG_TAHUN = 10;
   const TANGGAL_PENANDA_BIASA = 7;
 
   let pin = "";
-  let pin2 = "";
   let autoTimer = null;
   let cameraStream = null;
   let noClickCount = 0;
@@ -1455,6 +1455,53 @@ function renderPin() {
       setTimeout(renderPin, 500);
     }
   }
+
+function renderPin2() {
+  document.querySelectorAll('#pinDots2 .pin-dot').forEach((d, i) => {
+    d.textContent = pin2[i] ? '●' : '';
+  });
+}
+
+function digit2(n, e) {
+  if (e) createTouchEffect(e);
+  if (pin2.length >= 4) return;
+
+  pin2 += n;
+  renderPin2();
+
+  if (pin2.length === 4) {
+    setTimeout(checkPin2, 160);
+  }
+}
+
+function delPin2(e) {
+  if (e) createTouchEffect(e);
+  pin2 = pin2.slice(0, -1);
+  renderPin2();
+}
+
+function clearPin2(e) {
+  if (e) createTouchEffect(e);
+  pin2 = '';
+  renderPin2();
+  document.getElementById('pinError2').textContent = '';
+}
+
+function checkPin2() {
+  if (pin2 === PIN_KEDUA) {
+    document.getElementById('pinError2').textContent = 'Benar! Surat terbuka ♡';
+
+    setTimeout(() => {
+      pin2 = '';
+      renderPin2();
+      go(7);
+    }, 500);
+  } else {
+    document.getElementById('pinError2').textContent = 'Kode belum tepat, coba lagi ya 💗';
+    pin2 = '';
+    renderPin2();
+  }
+}
   
   function makeMemoryCards() {
   const grid = document.getElementById('memoryGrid');
